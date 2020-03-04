@@ -10,9 +10,9 @@ jobs:
     - uses: actions/checkout@v2
     - uses: numworks/setup-msys2@v1
     - name: update msys2
-    - run:  msys2do pacman -Syu --noconfirm
+      run:  msys2do pacman -Syu --noconfirm
     - name: install mingw
-    - run: msys2do pacman -S --no-confirm mingw-w64-x86_64-toolchain
+      run: msys2do pacman -S --no-confirm mingw-w64-x86_64-toolchain
     - name: install scons
       run: python -m pip install scons pywin32
     - name: build
