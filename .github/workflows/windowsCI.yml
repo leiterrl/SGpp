@@ -13,6 +13,8 @@ jobs:
       run:  msys2do pacman -Syu --noconfirm
     - name: install mingw
       run: msys2do pacman -S --noconfirm mingw-w64-x86_64-toolchain
+    - name: add mingwpath
+      run: echo "::add-path::msys/msys64/usr/bin"
     - name: install scons
       run: python -m pip install scons pywin32
     - name: build
