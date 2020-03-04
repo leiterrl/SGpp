@@ -15,11 +15,11 @@ jobs:
       run: |
         choco uninstall strawberryperl -y --remove-dependencies
         choco uninstall mingw -y --remove-dependencies
-        msys2do pacman -S --noconfirm mingw-w64-x86_64-gcc
+        msys2do pacman -S --noconfirm mingw-w64-x86_64-toolchain
         echo ::add-path::$GITHUB_WORKSPACE/msys/msys64/mingw64/bin
     - name: install scons
       run: |
-        echo %PATH%
+        $Env:Path
         python -m pip install scons pywin32
     - name: build
       run: scons -j2 SG_ALL=0 SG_BASE=1 COMPILER=gnu
