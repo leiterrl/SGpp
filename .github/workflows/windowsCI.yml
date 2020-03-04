@@ -9,12 +9,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: numworks/setup-msys2@v1
-    - name: update msys2
-      run:  msys2do pacman -Syu --noconfirm
+    #- name: update msys2
+    #  run:  msys2do pacman -Syu --noconfirm
     - name: install mingw
       run: |
+        choco uninstall strawberryperl -y --remove-dependencies
         choco uninstall mingw -y --remove-dependencies
-        msys2do pacman -S --noconfirm mingw-w64-x86_64-toolchain
+        msys2do pacman -S --noconfirm mingw-w64-x86_64-gcc
         echo ::add-path::$GITHUB_WORKSPACE/msys/msys64/mingw64/bin
     - name: install scons
       run: |
