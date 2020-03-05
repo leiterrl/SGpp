@@ -9,17 +9,19 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: numworks/setup-msys2@v1
-    - name: update msys2
-      run:  msys2do pacman -Syu --noconfirm
+      with:
+        update: true
+        path-type: inherit
     - name: install mingw
       run: |
         choco uninstall strawberryperl -y --remove-dependencies
         choco uninstall mingw -y --remove-dependencies
         msys2do pacman -S --noconfirm mingw-w64-x86_64-toolchain
-        echo ::add-path::$GITHUB_WORKSPACE/msys/msys64/mingw64/bin
+        
     - name: install scons
-      run: |
-        $Env:Path
-        python -m pip install scons pywin32
+      run: python -m pip install scons pywin32
     - name: build
-      run: scons -j2 SG_ALL=0 SG_BASE=1 COMPILER=gnu
+      run: |
+        echo ::add-path::$RUNNER_TEMP/msys/msys64/mingw64/bin
+        echo $Env:PATH
+        scons -j2 SG_ALL=0 SG_BASE=1 COMPILER=gnu
