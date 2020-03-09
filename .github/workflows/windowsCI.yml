@@ -22,5 +22,6 @@ jobs:
     - name: build
       run: |
         echo ::add-path::$RUNNER_TEMP/msys/msys64/mingw64/bin
+        $Env:PATH="$RUNNER_TEMP/msys/msys64/mingw64/bin;$Env:PATH"
         echo $Env:PATH
         scons -j2 SG_ALL=0 SG_BASE=1 COMPILER=gnu
