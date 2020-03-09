@@ -1,3 +1,4 @@
+#          (New-Object System.Net.WebClient).DownloadFile("http://prdownloads.sourceforge.net/swig/swigwin-4.0.1.zip","swigwin-4.0.1.zip");
 name: windowsCI
 
 on: [push]
@@ -9,7 +10,7 @@ jobs:
     steps:
       - name: Install swig
         run: |
-          (New-Object System.Net.WebClient).DownloadFile("http://prdownloads.sourceforge.net/swig/swigwin-4.0.1.zip","swigwin-4.0.1.zip");
+          Invoke-WebRequest -Uri "http://prdownloads.sourceforge.net/swig/swigwin-4.0.1.zip" -OutFile "swigwin-4.0.1.zip"
           Expand-Archive .\swigwin-4.0.1.zip .;
           echo "::add-path::./swigwin-4.0.1"
       - uses: actions/checkout@v2
