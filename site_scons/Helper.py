@@ -353,7 +353,7 @@ def CheckJNI(context):
   if os.environ.get("JAVA_HOME"):
     pname = os.path.join(os.environ.get("JAVA_HOME"), "include")
     if os.path.exists(os.path.join(pname, "jni.h")):
-      new_paths = [context.env.Dir(include_path) for include_path in [pname] + getSubdirs(pname)]
+      new_paths = ["'" + include_path + "'" for include_path in [pname] + getSubdirs(pname)]
       context.env.Append(CPPPATH=new_paths)
       res = "... found in " + pname
       context.Result(res)
