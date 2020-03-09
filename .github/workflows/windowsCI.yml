@@ -10,9 +10,8 @@ jobs:
     steps:
       - name: Install swig
         run: |
-          Invoke-WebRequest -Uri "http://prdownloads.sourceforge.net/swig/swigwin-4.0.1.zip" -OutFile "swigwin-4.0.1.zip" -UserAgent "[Microsoft.PowerShell.Commands.PSUserAgent]::FireFox"
-          Expand-Archive .\swigwin-4.0.1.zip .;
-          echo "::add-path::./swigwin-4.0.1"
+          (New-Object System.Net.WebClient).DownloadFile("http://prdownloads.sourceforge.net/swig/swigwin-4.0.1.zip","d:\a\_temp\swigwin-4.0.1.zip");
+          Expand-Archive d:\a\_temp\\swigwin-4.0.1.zip d:\a\_temp\;
       - uses: actions/checkout@v2
       - uses: numworks/setup-msys2@v1
         with:
