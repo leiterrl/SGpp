@@ -17,8 +17,6 @@ jobs:
         with:
           update: true
           path-type: inherit
-      - name: Check swig
-        run: swig -version
       - name: install mingw
         run: |
           msys2do pacman -S --noconfirm mingw-w64-x86_64-toolchain
@@ -27,6 +25,7 @@ jobs:
       - name: build
         run: |
           echo ::add-path::$RUNNER_TEMP/msys/msys64/mingw64/bin
-          $Env:PATH="d:\a\_temp\msys\msys64\mingw64\bin;$Env:PATH"
+          $Env:PATH=".\swigwin-4.0.1;d:\a\_temp\msys\msys64\mingw64\bin;$Env:PATH"
           echo $Env:PATH
+          swig -version
           scons -j2 PYDOC=0 CHECK_STYLE=0 COMPILER=gnu OPT=1 GSL_INCLUDE_PATH="" CPPDEFINES="_POSIX_C_SOURCE=1"
