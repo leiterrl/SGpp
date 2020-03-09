@@ -11,7 +11,7 @@ jobs:
       - name: Install swig
         run: |
           (New-Object System.Net.WebClient).DownloadFile("http://prdownloads.sourceforge.net/swig/swigwin-4.0.1.zip","d:\a\_temp\swigwin-4.0.1.zip");
-          Expand-Archive d:\a\_temp\\swigwin-4.0.1.zip d:\a\_temp\;
+          Expand-Archive d:\a\_temp\swigwin-4.0.1.zip d:\a\_temp\;
       - uses: actions/checkout@v2
       - uses: numworks/setup-msys2@v1
         with:
@@ -25,7 +25,7 @@ jobs:
       - name: build
         run: |
           echo ::add-path::$RUNNER_TEMP/msys/msys64/mingw64/bin
-          $Env:PATH=".\swigwin-4.0.1;d:\a\_temp\msys\msys64\mingw64\bin;$Env:PATH"
+          $Env:PATH="d:\a\_temp\swigwin-4.0.1;d:\a\_temp\msys\msys64\mingw64\bin;$Env:PATH"
           echo $Env:PATH
           swig -version
           scons -j2 PYDOC=0 CHECK_STYLE=0 COMPILER=gnu OPT=1 GSL_INCLUDE_PATH="" CPPDEFINES="_POSIX_C_SOURCE=1"
