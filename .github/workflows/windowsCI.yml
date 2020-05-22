@@ -17,11 +17,11 @@ jobs:
           # You can test your matrix by printing the current Python version
       - name: Copy Python to Python3.exe
         run: Copy-Item "C:\hostedtoolcache\windows\Python\3.8.3\x64\python.exe" -Destination "C:\hostedtoolcache\windows\Python\3.8.3\x64\python3.exe"
-#      - name: Remove choco gcc
-#        run: |
+      - name: Remove choco gcc
+        run: |
+          choco uninstall mingw strawberryperl -y
 #          Remove-Item -Recurse -Force C:\Strawberry
 #          Remove-Item -Recurse -Force C:\ProgramData\Chocolatey
-#          choco uninstall mingw -y
       - name: Install swig
         run: |
           Copy-Item -Path "C:\Program Files\Java\zulu-8-azure-jdk_8.40.0.25-8.0.222-win_x64" -Destination "d:\a\_temp\java" -Recurse
