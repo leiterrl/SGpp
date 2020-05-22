@@ -15,8 +15,8 @@ jobs:
           # Optional - x64 or x86 architecture, defaults to x64
           architecture: 'x64' 
           # You can test your matrix by printing the current Python version
-      - name: Display Python version
-        run: python -c "import sys; print(sys.version)"
+      - name: Copy Python to Python3.exe
+        run: Copy-Item "C:\hostedtoolcache\windows\Python\3.8.3\x64\python.exe" -Destination "C:\hostedtoolcache\windows\Python\3.8.3\x64\python3.exe"
       - name: Install swig
         run: |
           Copy-Item -Path "C:\Program Files\Java\zulu-8-azure-jdk_8.40.0.25-8.0.222-win_x64" -Destination "d:\a\_temp\java" -Recurse
@@ -35,7 +35,6 @@ jobs:
       - name: build
         run: |
           python -m pip install scons pywin32 numpy scipy matplotlib
-          Copy-Item "C:\hostedtoolcache\windows\Python\3.8.3\x64\python3.exe" -Destination "C:\hostedtoolcache\windows\Python\3.8.3\x64\python3.exe"
           $Env:JAVA_HOME = "d:\a\_temp\java"
           echo ::add-path::$RUNNER_TEMP/msys/msys64/mingw64/bin
           $Env:PATH="d:\a\_temp\swigwin-4.0.1;d:\a\_temp\msys\msys64\mingw64\bin;$Env:PATH"
