@@ -14,14 +14,15 @@ jobs:
           (New-Object System.Net.WebClient).DownloadFile("http://prdownloads.sourceforge.net/swig/swigwin-4.0.1.zip","d:\a\_temp\swigwin-4.0.1.zip");
           Expand-Archive d:\a\_temp\swigwin-4.0.1.zip d:\a\_temp\;
       - uses: actions/checkout@v2
-      - uses: numworks/setup-msys2@v1
+      - uses: eine/setup-msys2@v0
         with:
           update: true
-      - name: install mingw
-        run: |
-          msys2do pacman -Su
-          msys2do pacman -S --noconfirm mingw-w64-x86_64-toolchain
-          msys2do pacman -S --noconfirm mingw-w64-x86_64-python-numpy
+          install: 'mingw-w64-x86_64-toolchain mingw-w64-x86_64-python-numpy'
+#      - name: install mingw
+#        run: |
+#          msys2do pacman -Su
+#          msys2do pacman -S --noconfirm mingw-w64-x86_64-toolchain
+#          msys2do pacman -S --noconfirm mingw-w64-x86_64-python-numpy
       - name: build
         run: |
           python -m pip install scons pywin32 numpy scipy matplotlib
