@@ -8,6 +8,15 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      - uses: actions/setup-python@v2
+        with:
+          # Semantic version range syntax or exact version of a Python version
+          python-version: '3.8' 
+          # Optional - x64 or x86 architecture, defaults to x64
+          architecture: 'x64' 
+          # You can test your matrix by printing the current Python version
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
       - name: Install swig
         run: |
           Copy-Item -Path "C:\Program Files\Java\zulu-8-azure-jdk_8.40.0.25-8.0.222-win_x64" -Destination "d:\a\_temp\java" -Recurse
@@ -17,7 +26,7 @@ jobs:
       - uses: eine/setup-msys2@v0
         with:
           update: true
-          install: 'mingw-w64-x86_64-toolchain mingw-w64-x86_64-python-numpy'
+          install: 'mingw-w64-x86_64-toolchain'
 #      - name: install mingw
 #        run: |
 #          msys2do pacman -Su
