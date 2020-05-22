@@ -35,9 +35,7 @@ jobs:
       - name: build
         run: |
           python -m pip install scons pywin32 numpy scipy matplotlib
-          $PythonExe = python -c "import sys; print(sys.executable);"
-          Write-Output $PythonExe
-          Rename-Item -Path $PythonExe -NewName "python.exe"
+          Copy-Item "C:\hostedtoolcache\windows\Python\3.8.3\x64\python3.exe" -Destination "C:\hostedtoolcache\windows\Python\3.8.3\x64\python3.exe"
           $Env:JAVA_HOME = "d:\a\_temp\java"
           echo ::add-path::$RUNNER_TEMP/msys/msys64/mingw64/bin
           $Env:PATH="d:\a\_temp\swigwin-4.0.1;d:\a\_temp\msys\msys64\mingw64\bin;$Env:PATH"
