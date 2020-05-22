@@ -17,7 +17,6 @@ jobs:
       - uses: numworks/setup-msys2@v1
         with:
           update: true
-          path-type: inherit
       - name: install mingw
         run: |
           msys2do pacman -S --noconfirm mingw-w64-x86_64-toolchain
