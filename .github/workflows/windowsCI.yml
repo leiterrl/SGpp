@@ -17,9 +17,9 @@ jobs:
           # You can test your matrix by printing the current Python version
       - name: Copy Python to Python3.exe
         run: Copy-Item "C:\hostedtoolcache\windows\Python\3.8.3\x64\python.exe" -Destination "C:\hostedtoolcache\windows\Python\3.8.3\x64\python3.exe"
-      - name: Remove choco gcc
-        run: |
-          choco uninstall mingw strawberryperl -y
+#      - name: Remove choco gcc
+#        run: |
+#          choco uninstall mingw strawberryperl -y
 #          Remove-Item -Recurse -Force C:\Strawberry
 #          Remove-Item -Recurse -Force C:\ProgramData\Chocolatey
       - name: Install swig
@@ -31,7 +31,7 @@ jobs:
       - uses: eine/setup-msys2@v0
         with:
           update: true
-          install: 'mingw-w64-x86_64-toolchain'
+#          install: 'mingw-w64-x86_64-toolchain'
 #      - name: install mingw
 #        run: |
 #          msys2do pacman -Su
@@ -47,4 +47,4 @@ jobs:
           $Env:PATH="d:\a\_temp\swigwin-4.0.1;d:\a\_temp\msys\msys64\mingw64\bin;$Env:PATH"
           echo $Env:PATH
           swig -version
-          scons -j2 PYDOC=0 CHECK_STYLE=0 COMPILER=gnu OPT=1 GSL_INCLUDE_PATH="" CPPDEFINES="_POSIX_C_SOURCE=1"
+          scons -j2 PYDOC=0 CHECK_STYLE=0 COMPILER=gnu OPT=1 GSL_INCLUDE_PATH="" CPPDEFINES="_POSIX_C_SOURCE=1" CC="d:\a\_temp\msys\msys64\mingw64\bin\gcc.exe" CXX="d:\a\_temp\msys\msys64\mingw64\bin\g++.exe" LINK="d:\a\_temp\msys\msys64\mingw64\bin\g++.exe"
