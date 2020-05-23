@@ -11,12 +11,12 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           # Semantic version range syntax or exact version of a Python version
-          python-version: '3.8' 
+          python-version: '3.7.7' 
           # Optional - x64 or x86 architecture, defaults to x64
           architecture: 'x64' 
           # You can test your matrix by printing the current Python version
       - name: Copy Python to Python3.exe
-        run: Copy-Item "C:\hostedtoolcache\windows\Python\3.8.3\x64\python.exe" -Destination "C:\hostedtoolcache\windows\Python\3.8.3\x64\python3.exe"
+        run: Copy-Item "C:\hostedtoolcache\windows\Python\3.7.7\x64\python.exe" -Destination "C:\hostedtoolcache\windows\Python\3.7.7\x64\python3.exe"
 #      - name: Remove choco gcc
 #        run: |
 #          choco uninstall mingw strawberryperl -y
@@ -39,7 +39,7 @@ jobs:
       - name: add-path
         run: |
          echo "::add-path::c:\msys64\mingw64\bin"
-         echo "::add-path::c:\hostedtoolcache\windows\Python\3.8.3\x64"
+         echo "::add-path::c:\hostedtoolcache\windows\Python\3.7.7\x64"
       - name: build
         run: |
           python -m pip install scons pywin32 numpy scipy matplotlib
@@ -47,5 +47,6 @@ jobs:
           echo ::add-path::C:/msys64/mingw64/bin
           $Env:PATH="d:\a\_temp\swigwin-4.0.1;C:\msys64\mingw64\bin;$Env:PATH"
           echo $Env:PATH
+          echo $Env:BOOST_ROOT_1_72_0
           swig -version
-          scons -j2 PYDOC=0 CHECK_STYLE=0 COMPILER=gnu OPT=1 GSL_INCLUDE_PATH="" CPPDEFINES="_POSIX_C_SOURCE=1" CC="C:\msys64\mingw64\bin\gcc.exe" CXX="C:\msys64\mingw64\bin\g++.exe" LINK="C:\msys64\mingw64\bin\g++.exe"
+          scons -j2 PYDOC=0 CHECK_STYLE=0 COMPILER=gnu OPT=1 GSL_INCLUDE_PATH="" CPPDEFINES="_POSIX_C_SOURCE=1" CC="C:\msys64\mingw64\bin\gcc.exe" CXX="C:\msys64\mingw64\bin\g++.exe" LINK="C:\msys64\mingw64\bin\g++.exe" BOOST_INCLUDE_PATH=$Env:BOOST_ROOT_1_72_0 BOOST_LIBRARY_PATH=$Env:BOOST_ROOT_1_72_0\stage\lib
