@@ -42,10 +42,12 @@ jobs:
 #          msys2do pacman -S --noconfirm mingw-w64-x86_64-python-numpy
       - name: add-path
         run: |
+         pacman -S --noconfirm mingw-w64-x86_64-boost
          echo "::add-path::c:\msys64\mingw64\bin"
          echo "::add-path::c:\hostedtoolcache\windows\Python\3.7.7\x64"
       - name: build
         run: |
+          Copy-Item "c:\msys64\mingw64\bin\libboost_unit_test_framework-mt.dll -Destination "c:\msys64\mingw64\bin\boost_unit_test_framework.dll"
           python -m pip install scons pywin32 numpy scipy matplotlib
           $Env:JAVA_HOME = "d:\a\_temp\java"
           echo ::add-path::C:/msys64/mingw64/bin
@@ -53,4 +55,4 @@ jobs:
           echo $Env:PATH
           echo $Env:BOOST_ROOT_1_72_0
           swig -version
-          scons -j2 PYDOC=0 CHECK_STYLE=0 COMPILER=gnu OPT=1 GSL_INCLUDE_PATH="" CPPDEFINES="_POSIX_C_SOURCE=1" CC="C:\msys64\mingw64\bin\gcc.exe" CXX="C:\msys64\mingw64\bin\g++.exe" LINK="C:\msys64\mingw64\bin\g++.exe" BOOST_INCLUDE_PATH=$Env:BOOST_ROOT_1_72_0 BOOST_LIBRARY_PATH=$Env:BOOST_ROOT_1_72_0\lib
+          scons -j2 PYDOC=0 CHECK_STYLE=0 COMPILER=gnu OPT=1 GSL_INCLUDE_PATH="" CPPDEFINES="_POSIX_C_SOURCE=1" CC="C:\msys64\mingw64\bin\gcc.exe" CXX="C:\msys64\mingw64\bin\g++.exe" LINK="C:\msys64\mingw64\bin\g++.exe" BOOST_INCLUDE_PATH=c:\msys64\mingw64\include\ BOOST_LIBRARY_PATH=c:\msys64\mingw64\bin\
