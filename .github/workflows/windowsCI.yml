@@ -16,7 +16,9 @@ jobs:
           architecture: 'x64' 
           # You can test your matrix by printing the current Python version
       - name: Copy Python to Python3.exe
-        run: Copy-Item "C:\hostedtoolcache\windows\Python\3.7.7\x64\python.exe" -Destination "C:\hostedtoolcache\windows\Python\3.7.7\x64\python3.exe"
+        run: |
+         Copy-Item "C:\hostedtoolcache\windows\Python\3.7.7\x64\python.exe" -Destination "C:\hostedtoolcache\windows\Python\3.7.7\x64\python3.exe"
+         Copy-Item "C:\hostedtoolcache\windows\Boost\1.72.0\lib\boost_unit_test_framework-vc142-mt-x64-1_72.dll" -Destination "boost_unit_test_framework.dll"
 #      - name: Remove choco gcc
 #        run: |
 #          choco uninstall mingw strawberryperl -y
