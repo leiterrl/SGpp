@@ -24,6 +24,7 @@ jobs:
 #          Remove-Item -Recurse -Force C:\ProgramData\Chocolatey
       - name: Install swig
         run: |
+          Get-ChildItem -Path C:\hostedtoolcache\windows\Boost\1.72.0\stage\lib
           Copy-Item -Path "C:\Program Files\Java\zulu-8-azure-jdk_8.40.0.25-8.0.222-win_x64" -Destination "d:\a\_temp\java" -Recurse
           (New-Object System.Net.WebClient).DownloadFile("http://prdownloads.sourceforge.net/swig/swigwin-4.0.1.zip","d:\a\_temp\swigwin-4.0.1.zip");
           Expand-Archive d:\a\_temp\swigwin-4.0.1.zip d:\a\_temp\;
