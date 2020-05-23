@@ -39,7 +39,7 @@ jobs:
       - name: add-path
         run: |
          echo "::add-path::c:\msys64\mingw64\bin"
-         echo "::add-path::c:\hostedtoolcache\windows\Python\3.8.3\x64
+         echo "::add-path::c:\hostedtoolcache\windows\Python\3.8.3\x64"
       - name: build
         run: |
           python -m pip install scons pywin32 numpy scipy matplotlib
