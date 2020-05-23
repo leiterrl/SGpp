@@ -28,22 +28,20 @@ jobs:
           (New-Object System.Net.WebClient).DownloadFile("http://prdownloads.sourceforge.net/swig/swigwin-4.0.1.zip","d:\a\_temp\swigwin-4.0.1.zip");
           Expand-Archive d:\a\_temp\swigwin-4.0.1.zip d:\a\_temp\;
       - uses: actions/checkout@v2
-      - uses: eine/setup-msys2@v0
-        with:
-          update: true
-          install: 'mingw-w64-x86_64-toolchain'
+#      - uses: eine/setup-msys2@v0
+#        with:
+#          update: true
 #      - name: install mingw
 #        run: |
 #          msys2do pacman -Su
 #          msys2do pacman -S --noconfirm mingw-w64-x86_64-toolchain
 #          msys2do pacman -S --noconfirm mingw-w64-x86_64-python-numpy
       - name: add-path
-        run: echo "::add-path::c:\msys64\mingw64\bin"
+        run: |
+         echo "::add-path::c:\msys64\mingw64\bin"
+         echo "::add-path::c:\hostedtoolcache\windows\Python\3.8.3\x64
       - name: build
         run: |
-          Get-ChildItem -Path C:\msys64
-          Get-ChildItem -Path C:\msys64\mingw64
-          Get-ChildItem -Path C:\msys64\mingw64\bin
           python -m pip install scons pywin32 numpy scipy matplotlib
           $Env:JAVA_HOME = "d:\a\_temp\java"
           echo ::add-path::C:/msys64/mingw64/bin
