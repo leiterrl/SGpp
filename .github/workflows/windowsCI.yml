@@ -42,7 +42,7 @@ jobs:
 #          msys2do pacman -S --noconfirm mingw-w64-x86_64-python-numpy
       - name: add-path
         run: |
-         pacman -S --noconfirm mingw-w64-x86_64-boost
+         c:\msys64\usr\bin\pacman.exe -S --noconfirm mingw-w64-x86_64-boost
          echo "::add-path::c:\msys64\mingw64\bin"
          echo "::add-path::c:\hostedtoolcache\windows\Python\3.7.7\x64"
       - name: build
