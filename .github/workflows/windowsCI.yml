@@ -25,8 +25,7 @@ jobs:
       - name: Install swig
         run: |
           Get-ChildItem -Path C:\hostedtoolcache\windows\Boost\1.72.0
-          Get-ChildItem -Path C:\hostedtoolcache\windows\Boost\1.72.0\stage
-          Get-ChildItem -Path C:\hostedtoolcache\windows\Boost\1.72.0\stage\lib
+          Get-ChildItem -Path C:\hostedtoolcache\windows\Boost\1.72.0\lib
           Copy-Item -Path "C:\Program Files\Java\zulu-8-azure-jdk_8.40.0.25-8.0.222-win_x64" -Destination "d:\a\_temp\java" -Recurse
           (New-Object System.Net.WebClient).DownloadFile("http://prdownloads.sourceforge.net/swig/swigwin-4.0.1.zip","d:\a\_temp\swigwin-4.0.1.zip");
           Expand-Archive d:\a\_temp\swigwin-4.0.1.zip d:\a\_temp\;
@@ -52,4 +51,4 @@ jobs:
           echo $Env:PATH
           echo $Env:BOOST_ROOT_1_72_0
           swig -version
-          scons -j2 PYDOC=0 CHECK_STYLE=0 COMPILER=gnu OPT=1 GSL_INCLUDE_PATH="" CPPDEFINES="_POSIX_C_SOURCE=1" CC="C:\msys64\mingw64\bin\gcc.exe" CXX="C:\msys64\mingw64\bin\g++.exe" LINK="C:\msys64\mingw64\bin\g++.exe" BOOST_INCLUDE_PATH=$Env:BOOST_ROOT_1_72_0 BOOST_LIBRARY_PATH=$Env:BOOST_ROOT_1_72_0\stage\lib
+          scons -j2 PYDOC=0 CHECK_STYLE=0 COMPILER=gnu OPT=1 GSL_INCLUDE_PATH="" CPPDEFINES="_POSIX_C_SOURCE=1" CC="C:\msys64\mingw64\bin\gcc.exe" CXX="C:\msys64\mingw64\bin\g++.exe" LINK="C:\msys64\mingw64\bin\g++.exe" BOOST_INCLUDE_PATH=$Env:BOOST_ROOT_1_72_0 BOOST_LIBRARY_PATH=$Env:BOOST_ROOT_1_72_0\lib
