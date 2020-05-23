@@ -55,4 +55,4 @@ jobs:
           echo $Env:PATH
           echo $Env:BOOST_ROOT_1_72_0
           swig -version
-          scons -j2 PYDOC=0 CHECK_STYLE=0 COMPILER=gnu OPT=1 GSL_INCLUDE_PATH="" CPPDEFINES="_POSIX_C_SOURCE=1" CC="C:\msys64\mingw64\bin\gcc.exe" CXX="C:\msys64\mingw64\bin\g++.exe" LINK="C:\msys64\mingw64\bin\g++.exe" BOOST_INCLUDE_PATH=c:\msys64\mingw64\include\ BOOST_LIBRARY_PATH=c:\msys64\mingw64\bin\
+          scons -j2 PYDOC=0 CHECK_STYLE=0 COMPILER=gnu OPT=1 GSL_INCLUDE_PATH="" CPPDEFINES="_POSIX_C_SOURCE=1" CC="C:\msys64\mingw64\bin\gcc.exe" CXX="C:\msys64\mingw64\bin\g++.exe" LINK="C:\msys64\mingw64\bin\g++.exe" BOOST_INCLUDE_PATH="c:\msys64\mingw64\include" BOOST_LIBRARY_PATH="c:\msys64\mingw64\bin"
