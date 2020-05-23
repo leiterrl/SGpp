@@ -47,7 +47,7 @@ jobs:
          echo "::add-path::c:\hostedtoolcache\windows\Python\3.7.7\x64"
       - name: build
         run: |
-          Copy-Item "c:\msys64\mingw64\bin\libboost_unit_test_framework-mt.dll -Destination "c:\msys64\mingw64\bin\boost_unit_test_framework.dll"
+          Copy-Item "c:\msys64\mingw64\bin\libboost_unit_test_framework-mt.dll" -Destination "c:\msys64\mingw64\bin\boost_unit_test_framework.dll"
           python -m pip install scons pywin32 numpy scipy matplotlib
           $Env:JAVA_HOME = "d:\a\_temp\java"
           echo "::add-path::C:/msys64/mingw64/bin"
