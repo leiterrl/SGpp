@@ -40,6 +40,8 @@ jobs:
   build_linux_base:
     runs-on: ubuntu-latest
     steps:
+      - name: install python dependencies
+        run: python3 -m pip install scons
       - uses: actions/checkout@v2
       - name: build
         run: scons -j2 SG_ALL=0 SG_BASE=1
