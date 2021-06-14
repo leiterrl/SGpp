@@ -17,9 +17,7 @@ jobs:
       - name: Install boost
         run: c:\msys64\usr\bin\pacman.exe -S --noconfirm mingw-w64-x86_64-boost
       - name: Rename python and boost library
-        run: |
-         Rename-Item "C:\hostedtoolcache\windows\Python\3.7.7\x64\python.exe" -NewName "python3.exe"
-         Copy-Item "c:\msys64\mingw64\bin\libboost_unit_test_framework-mt.dll" -Destination "c:\msys64\mingw64\bin\boost_unit_test_framework.dll"
+        run: Copy-Item "c:\msys64\mingw64\bin\libboost_unit_test_framework-mt.dll" -Destination "c:\msys64\mingw64\bin\boost_unit_test_framework.dll"
       - name: Install swig
         run: |
           Copy-Item -Path "C:\Program Files\Java\zulu-8-azure-jdk_8.40.0.25-8.0.222-win_x64" -Destination "d:\a\_temp\java" -Recurse
