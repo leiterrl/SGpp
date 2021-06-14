@@ -3,8 +3,11 @@ name: windowsCI
 on: [push]
 
 jobs:
-  build:
+  windows:
     runs-on: windows-latest
+    strategy:
+      matrix:
+        static: [0, 1]
 
     steps:
       - uses: actions/setup-python@v2
@@ -32,7 +35,7 @@ jobs:
         run: python -m pip install scons pywin32 numpy scipy matplotlib
       - uses: actions/checkout@v2
       - name: build
-        run: scons -j2 PYDOC=0 CHECK_STYLE=0 COMPILER=gnu OPT=1 GSL_INCLUDE_PATH="" CPPDEFINES="_POSIX_C_SOURCE=1" CC="C:\msys64\mingw64\bin\gcc.exe" CXX="C:\msys64\mingw64\bin\g++.exe" LINK="C:\msys64\mingw64\bin\g++.exe" BOOST_INCLUDE_PATH="C:\msys64\mingw64\include" BOOST_LIBRARY_PATH="C:\msys64\mingw64\bin"
+        run: scons -j2 PYDOC=0 CHECK_STYLE=0 BUILD_STATICLIB=${{ matrix.static }} COMPILER=gnu OPT=1 GSL_INCLUDE_PATH="" CPPDEFINES="_POSIX_C_SOURCE=1" CC="C:\msys64\mingw64\bin\gcc.exe" CXX="C:\msys64\mingw64\bin\g++.exe" LINK="C:\msys64\mingw64\bin\g++.exe" BOOST_INCLUDE_PATH="C:\msys64\mingw64\include" BOOST_LIBRARY_PATH="C:\msys64\mingw64\bin"
   build_linux_base:
     runs-on: ubuntu-latest
     steps:
