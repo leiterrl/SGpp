@@ -16,11 +16,10 @@ jobs:
           # You can test your matrix by printing the current Python version
       - name: Install boost
         run: c:\msys64\usr\bin\pacman.exe -S --noconfirm mingw-w64-x86_64-boost
-      - name: Rename python and boost library
+      - name: Boost library
         run: Copy-Item "c:\msys64\mingw64\bin\libboost_unit_test_framework-mt.dll" -Destination "c:\msys64\mingw64\bin\boost_unit_test_framework.dll"
       - name: Install swig
         run: |
-          Copy-Item -Path "C:\Program Files\Java\zulu-8-azure-jdk_8.40.0.25-8.0.222-win_x64" -Destination "d:\a\_temp\java" -Recurse
           (New-Object System.Net.WebClient).DownloadFile("http://prdownloads.sourceforge.net/swig/swigwin-4.0.1.zip","d:\a\_temp\swigwin-4.0.1.zip");
           Expand-Archive d:\a\_temp\swigwin-4.0.1.zip d:\a\_temp\;
       - name: setup-enviroment
@@ -29,7 +28,7 @@ jobs:
          echo "::add-path::c:\hostedtoolcache\windows\Python\3.7.7\x64"
          echo "::add-path::c:\hostedtoolcache\windows\Python\3.7.7\x64"
          echo "::add-path::d:\a\_temp\swigwin-4.0.1"
-         echo "::set-env name=JAVA_HOME::d:\a\_temp\java"
+         echo "::set-env name=JAVA_HOME::JAVA_HOME_13_X64"
       - name: install python dependencies
         run: python -m pip install scons pywin32 numpy scipy matplotlib
       - uses: actions/checkout@v2
