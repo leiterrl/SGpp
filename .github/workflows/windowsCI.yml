@@ -50,7 +50,9 @@ jobs:
       - name: install python dependencies
         run: python -m pip install scons
       - name: install apt packages
-        run: sudo apt install libboost-test-dev swig python3-dev python3-numpy openjdk-8-jdk doxygen
+        run: |
+          sudo apt update -y
+          sudo apt install -y libboost-test-dev swig python3-dev python3-numpy openjdk-8-jdk doxygen
       - uses: actions/checkout@v2
       - name: build
         run: scons -j 2 SG_ALL=0 SG_BASE=1 SG_PYTHON=1 SG_JAVA=1 RUN_CPP_EXAMPLES=1 RUN_PYTHON_EXAMPLES=1
@@ -60,7 +62,9 @@ jobs:
       - name: install python dependencies
         run: python -m pip install scons
       - name: install apt packages
-        run: sudo apt install libboost-test-dev swig python3-dev python3-numpy openjdk-8-jdk doxygen graphviz libgsl-dev zlib1g-dev libeigen3-dev libsuitesparse-dev libarmadillo-dev libgmm++-dev
+        run: |
+          sudo apt update -y
+          sudo apt install -y libboost-test-dev swig python3-dev python3-numpy openjdk-8-jdk doxygen graphviz libgsl-dev zlib1g-dev libeigen3-dev libsuitesparse-dev libarmadillo-dev libgmm++-dev
       - uses: actions/checkout@v2
       - name: build
         run: scons -j 2 RUN_CPP_EXAMPLES=1 RUN_PYTHON_EXAMPLES=1
@@ -70,7 +74,15 @@ jobs:
       - name: install scons
         run: python -m pip install scons
       - name: install apt packages
-        run: sudo apt install fakeroot swig python3-pip python3-dev libgomp1 doxygen openjdk-11-jdk javahelper
+        run: |
+          sudo apt update -y
+          sudo apt install -y fakeroot swig python3-pip python3-dev libgomp1 doxygen openjdk-11-jdk javahelper
+      - name: prepare packaging
+        run: bash $GITHUB_WORKSPACE/tools/travis_scripts/install_pip_packaging_tools.sh
+      - name: test deb packaging
+        run: bash $GITHUB_WORKSPACE/tools/travis_scripts/create_deb_install_deb_and_test.sh
+      - name: test python packaging
+        run: bash $GITHUB_WORKSPACE/tools/travis_scripts/create_and_patch_python_wheel.sh
   
   
   
