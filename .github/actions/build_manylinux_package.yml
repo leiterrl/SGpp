@@ -1,0 +1,7 @@
+name: 'build_manylinux_package'
+description: 'Build SGpp manylinux package'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  
