@@ -17,6 +17,8 @@ cd io
 
 export LD_LIBRARY_PATH=$(pwd)/lib:$LD_LIBRARY_PATH
 
+yum install -y doxygen
+
 scons -j8 SG_JAVA=0 RUN_BOOST_TESTS=0 CHECK_STYLE=0 PYDOC=1 LINKFLAGS=-s
 
 python setup.py bdist_wheel
