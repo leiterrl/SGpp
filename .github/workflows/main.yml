@@ -32,4 +32,5 @@ jobs:
         python-versions: 'cp37-cp37m'
         build-requirements: 'cython numpy scons'
         #system-packages: 'swig3'
+        pip-wheel-args: '-w ./wheels --use-feature=in-tree-build'
         pre-build-command: 'bash tools/manylinux_setup_script.sh'
