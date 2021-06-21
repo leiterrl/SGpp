@@ -37,7 +37,7 @@ jobs:
       - name: build
         run: scons -j2 'CCFLAGS=-Werror' PYDOC=0 CHECK_STYLE=0 BUILD_STATICLIB=${{ matrix.static }} COMPILER=gnu OPT=1 GSL_INCLUDE_PATH="" CPPDEFINES="_POSIX_C_SOURCE=1" CC="C:\msys64\mingw64\bin\gcc.exe" CXX="C:\msys64\mingw64\bin\g++.exe" LINK="C:\msys64\mingw64\bin\g++.exe" BOOST_INCLUDE_PATH="C:\msys64\mingw64\include" BOOST_LIBRARY_PATH="C:\msys64\mingw64\bin"
       - name: The job has failed
-        if: ${{ failure() }}
+        #if: ${{ failure() }}
         run: type config.log
   linux-minimal:
     runs-on: ubuntu-latest
