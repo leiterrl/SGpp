@@ -31,5 +31,5 @@ jobs:
       with:
         python-versions: 'cp37-cp37m'
         build-requirements: 'cython numpy scons'
-        system-packages: 'swig3'
+        #system-packages: 'swig3'
         pre-build-command: 'bash tools/manylinux_setup_script.sh'
