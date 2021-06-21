@@ -19,7 +19,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build manylinux python wheels
-      uses: ./.github/actions/build_manylinux_package
+      uses: ./.github/build_manylinux_package
     - name: post-build
       run: |
         ls -la ./wheels
