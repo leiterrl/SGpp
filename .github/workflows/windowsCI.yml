@@ -1,7 +1,8 @@
 name: windowsCI
 
-on: [push]
-
+on:
+  [push, workflow_dispatch]
+  
 jobs:
   windows:
     runs-on: windows-latest
