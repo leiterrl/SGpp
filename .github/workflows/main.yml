@@ -22,5 +22,5 @@ jobs:
       uses: ./.github/build_manylinux_package
     - name: post-build
       run: |
-        ls -la ./wheels
+        ls -la ./dist
         ls -la .
