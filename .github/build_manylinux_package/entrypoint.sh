@@ -11,7 +11,7 @@ python --version
 pip install --upgrade --no-cache-dir pip
 pip install --no-cache-dir scons numpy
 
-cd io
+cd /github/workspace
 
 /opt/python/"${PY_VER}"/bin/scons -j2 SG_ALL=0 SG_BASE=1 SG_PYTHON=1 CHECK_STYLE=0
 
