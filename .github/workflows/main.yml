@@ -34,3 +34,7 @@ jobs:
         #system-packages: 'swig3'
         pip-wheel-args: '-w ./wheels --use-feature=in-tree-build'
         pre-build-command: 'bash tools/manylinux_setup_script.sh'
+    - name: post-build
+      run: |
+        ls -la ./wheels
+        ls -la .
