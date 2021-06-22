@@ -17,14 +17,24 @@ jobs:
   deploy:
     runs-on: ubuntu-latest      
     steps:
+    #- name: Extract version string
+    #  id: extract-version
+    #  run: |
+    #    version=$(echo ${{ github.event.release.tag_name }} | cut -c2-)
+    #    echo "::set-output name=version::$version"
     - uses: actions/checkout@v2
     - name: Build manylinux python wheels
+    #  env: 
+    #    SGPP_VERSION: ${{steps.extract-version.outputs.version}}
       uses: ./.github/build_manylinux_package
     - name: post-build
+    #  env: 
+    #    SGPP_VERSION: ${{steps.extract-version.outputs.version}}
       run: |
         ls -la .
         ls -la ./dist
         ls -la ./wheelhouse
+    #   echo $SGPP_VERSION
     - name: upload to testing pypi
       env:
         TWINE_USERNAME: "__token__"
