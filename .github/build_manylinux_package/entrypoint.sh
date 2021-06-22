@@ -23,5 +23,5 @@ scons -j8 SG_JAVA=0 RUN_BOOST_TESTS=0 CHECK_STYLE=0 PYDOC=1 LINKFLAGS=-s
 
 python setup.py bdist_wheel
 
-auditwheel repair dist/pysgpp-0.0.0-py3-none-any.whl --plat manylinux2014_x86_64
+auditwheel repair dist/pysgpp-3.4.0-py3-none-any.whl --plat manylinux2014_x86_64
 
